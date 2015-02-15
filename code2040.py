@@ -1,5 +1,6 @@
 # @author Joshua Perline
 # 2/14/2015 (Don't judge)
+# running "python code2040.py" will run registration and all stages
 
 import json, requests, datetime, dateutil.parser
 
@@ -7,7 +8,7 @@ def registerAPI():
 	"""My token is "shwxakN9aj" """
 	data = {'email':'joshperline@berkeley.edu',
 			'github': 'https://github.com/joshperline/Code2040APIChallenge'}
-	print postRequest('register', data)
+	print "Your Token is:", postRequest('register', data)
 
 def stage1():
 	""" Reverse a string """
@@ -16,7 +17,7 @@ def stage1():
 	reversed_string = token[::-1]
 
 	data = {'token': 'shwxakN9aj', 'string': reversed_string}
-	postRequest('validatestring', data)
+	print postRequest('validatestring', data)
 
 def stage2():
 	""" Needle in a haystack """
@@ -31,7 +32,7 @@ def stage2():
 			break
 
 	data = {'token': 'shwxakN9aj', 'needle': needle_index}
-	postRequest('validateneedle', data)
+	print postRequest('validateneedle', data)
 
 def stage3():
 	""" return an array containing only the strings 
@@ -46,7 +47,7 @@ def stage3():
 			new_array.append(string)
 	
 	data = {'token': 'shwxakN9aj', 'array': new_array}
-	postRequest('validateprefix', data)
+	print postRequest('validateprefix', data)
 
 def stage4():
 	""" The dating game """
@@ -58,7 +59,7 @@ def stage4():
 	my_date = my_date.isoformat()
 
 	data = {'token': 'shwxakN9aj', 'datestamp': my_date}
-	postRequest('validatetime', data)
+	print postRequest('validatetime', data)
 
 
 def postRequest(url, data = {'token': 'shwxakN9aj'}):
@@ -68,9 +69,8 @@ def postRequest(url, data = {'token': 'shwxakN9aj'}):
 						  data=data_json)
 	return token.json()['result']
 
-# registerAPI()
-# stage1()
-# stage2()
-# stage3()
-# stage4()
-
+registerAPI()
+stage1()
+stage2()
+stage3()
+stage4()
