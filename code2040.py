@@ -35,7 +35,7 @@ def stage2():
 	print postRequest('validateneedle', data)
 
 def stage3():
-	""" return an array containing only the strings 
+	""" Return an array containing only the strings 
 	that do not start with that prefix. """
 	token = postRequest('prefix')
 
